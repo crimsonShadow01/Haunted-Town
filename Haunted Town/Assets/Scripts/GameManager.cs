@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //Game details
+    public GameObject playerSpawn;
+
     //need to actually define this and flesh it out more. 
     private playerList players;
 
