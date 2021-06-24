@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+
+/// <summary>
+/// 
+/// This will manage the combat scenes. 
+/// The GameManager will tell this class what the party is and what the enemies are so that it can instantiate the fight scene properly. 
+/// </summary>
+public class CombatManager : MonoBehaviour
 {
     //**Gameobjects we will need to reference**//
 
