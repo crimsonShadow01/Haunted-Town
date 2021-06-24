@@ -19,7 +19,7 @@ public class CombatManager : MonoBehaviour
     public GameObject combatMenu;
     //Game States
     public enum State { COMBAT, GAMEOVER, VICTORY, LOADLEVEL, MENU, ALLYTURN, ENEMYTURN}
-    State gameState;
+    State combatState;
 
     //need to actually define this and flesh it out more. 
     private playerList players;
@@ -74,7 +74,7 @@ public class CombatManager : MonoBehaviour
 
     void EndState()
     {
-        switch (gameState)
+        switch (combatState)
         {
             case State.MENU:
                 //If we want a start button menu, do that here
