@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     public float walkSpeed; //Putting this here to be used with navigation.
 
 
+    //****CONTROL SCHEME*****//
+    //MOVEMENT//
+    private KeyCode moveLeft = KeyCode.LeftArrow;
+    private KeyCode moveRight = KeyCode.RightArrow;
+
+
     //Relevant fields needed to keep track of
     public enum gameState { MAINMENU, EXPLORE, COMBAT, MENU, INVENTORY, PARTYSELECT } //various game states the player can be in, IE menus/levels/screens. 
     gameState currentLevel;
@@ -32,12 +38,30 @@ public class GameManager : MonoBehaviour
             case gameState.MAINMENU:
                 return; //Don't want to do regsiter any inputs on the main menu unless it's clicking buttons on the screen.
             case gameState.EXPLORE:
+                if (Input.GetKey(moveLeft))
+                {
+                    //move left
+                    return;
+                }
+                if (Input.GetKey(moveRight))
+                {
+                    //move right
+                    return;
+                }
                 break;
             case gameState.COMBAT:
                 break;
             case gameState.MENU:
                 break;
             case gameState.INVENTORY:
+                if (Input.GetKey(moveLeft))
+                {
+                    //move left
+                }
+                if (Input.GetKey(moveRight))
+                {
+                    //move right
+                }
                 break;
             case gameState.PARTYSELECT:
                 break;
