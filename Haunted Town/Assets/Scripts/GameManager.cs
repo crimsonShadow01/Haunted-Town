@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     //MOVEMENT//
     private KeyCode moveLeft = KeyCode.LeftArrow;
     private KeyCode moveRight = KeyCode.RightArrow;
+    private KeyCode moveDown = KeyCode.DownArrow;
+    private KeyCode moveUp = KeyCode.UpArrow;
 
 
     //Relevant fields needed to keep track of
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //**This will not stay in this class ultimately. Each switch state will be assigned to it's own 'mini game manager' for it's respective state. Just fleshing out for now since we are still early on**//
         //Check inputs
         switch (currentLevel)
         {
@@ -50,17 +53,25 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case gameState.COMBAT:
-                break;
+                return; //Combat is button clicking
             case gameState.MENU:
                 break;
             case gameState.INVENTORY:
                 if (Input.GetKey(moveLeft))
                 {
-                    //move left
+                    //move left in inventory
                 }
                 if (Input.GetKey(moveRight))
                 {
-                    //move right
+                    //move right in inventory
+                }
+                if (Input.GetKey(moveDown))
+                {
+                    //move down in inventory
+                }
+                if (Input.GetKey(moveUp))
+                {
+                    //move up in inventory;
                 }
                 break;
             case gameState.PARTYSELECT:
@@ -72,4 +83,16 @@ public class GameManager : MonoBehaviour
         }
        
     }
+
+    //Methods for the 'middle management' to call
+
+    //something like party health adjustment
+
+    //hunger?
+
+    //swap active party out
+
+    //combat lost
+    
+    //consumable something
 }
