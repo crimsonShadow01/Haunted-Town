@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //Variables used to balance multiple parts of the game
-    public int partySize = 4; //Modify this to change how big we make the party.
-    public float walkSpeed; //Putting this here to be used with navigation.
+    public static int partySize = 4; //Modify this to change how big we make the party.
+    public static float walkSpeed; //Putting this here to be used with navigation.
 
 
     //****CONTROL SCHEME*****//
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     //Relevant fields needed to keep track of
     public enum gameState { MAINMENU, EXPLORE, COMBAT, MENU, INVENTORY, PARTYSELECT } //various game states the player can be in, IE menus/levels/screens. 
     gameState currentLevel;
+    public string[] playerParty = new string[partySize];
+    //public HashSet<Hero> heroRoster; Will need to make a hero type so this doesn't breatk, but will have this so that 
 
     // Start is called before the first frame update
     void Start()
@@ -41,48 +43,79 @@ public class GameManager : MonoBehaviour
             case gameState.MAINMENU:
                 return; //Don't want to do regsiter any inputs on the main menu unless it's clicking buttons on the screen.
             case gameState.EXPLORE:
-                if (Input.GetKey(moveLeft))
-                {
-                    //move left
-                    return;
-                }
-                if (Input.GetKey(moveRight))
-                {
-                    //move right
-                    return;
-                }
+                exploreControls();
                 break;
             case gameState.COMBAT:
-                return; //Combat is button clicking
+                return; //Combat is button clicking? maybe some hotkeys we can add in
             case gameState.MENU:
                 break;
             case gameState.INVENTORY:
-                if (Input.GetKey(moveLeft))
-                {
-                    //move left in inventory
-                }
-                if (Input.GetKey(moveRight))
-                {
-                    //move right in inventory
-                }
-                if (Input.GetKey(moveDown))
-                {
-                    //move down in inventory
-                }
-                if (Input.GetKey(moveUp))
-                {
-                    //move up in inventory;
-                }
+                inventoryControls();
                 break;
             case gameState.PARTYSELECT:
                 break;
             default:
                 break;
         }
-       
-        }
-       
+
     }
+
+    /// <summary>
+    ///  Handles control inputs for inventory screen. called from Update()
+    /// </summary>
+
+    private void inventoryControls()
+    {
+        if (Input.GetKey(moveLeft))
+        {
+            //move left in inventory
+        }
+        if (Input.GetKey(moveRight))
+        {
+            //move right in inventory
+        }
+        if (Input.GetKey(moveDown))
+        {
+            //move down in inventory
+        }
+        if (Input.GetKey(moveUp))
+        {
+            //move up in inventory;
+        }
+    }
+
+    /// <summary>
+    /// Handles key controls in exploration screen. Called from Update()
+    /// </summary>
+    private void exploreControls()
+    {
+        if (Input.GetKey(moveLeft))
+        {
+            //move left
+            return;
+        }
+        if (Input.GetKey(moveRight))
+        {
+            //move right
+            return;
+        }
+    }
+
+
+    private void partyScreenControls()
+    {
+        //move right through the party
+
+        //move left through the party
+
+        //'activate' the currently selected member to swap out
+
+        //select the currently 'selected' member to adjust inventory?
+    }
+
+    
+}
+
 
     //Methods for the 'middle management' to call
 
@@ -90,9 +123,5 @@ public class GameManager : MonoBehaviour
 
     //hunger?
 
-    //swap active party out
-
-    //combat lost
-    
     //consumable something
 }
